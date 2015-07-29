@@ -110,6 +110,21 @@ Func Standard_PrepareAttack($remaining = False, $AttackMethod = 1, $noPrint = Fa
 					ElseIf $troopKind = $eWallbreaker And _GUICtrlComboBox_GetCurSel($BarrackControl) = 4 Then
 						$atkTroops[$i][0] = $troopKind
 						ExitLoop
+					ElseIf $troopKind = $eBalloon And _GUICtrlComboBox_GetCurSel($BarrackControl) = 5 Then
+						$atkTroops[$i][0] = $troopKind
+						ExitLoop
+					ElseIf $troopKind = $eWizard And _GUICtrlComboBox_GetCurSel($BarrackControl) = 6 Then
+						$atkTroops[$i][0] = $troopKind
+						ExitLoop
+					ElseIf $troopKind = $eHealer And _GUICtrlComboBox_GetCurSel($BarrackControl) = 7 Then
+						$atkTroops[$i][0] = $troopKind
+						ExitLoop
+					ElseIf $troopKind = $eDragon And _GUICtrlComboBox_GetCurSel($BarrackControl) = 8 Then
+						$atkTroops[$i][0] = $troopKind
+						ExitLoop
+					ElseIf $troopKind = $ePekka And _GUICtrlComboBox_GetCurSel($BarrackControl) = 9 Then
+						$atkTroops[$i][0] = $troopKind
+						ExitLoop
 					ElseIf $troopKind = $eMinion And ($DarkBarrackTroop[0] = 0 Or $DarkBarrackTroop[1] = 0) Then
 						$atkTroops[$i][0] = $troopKind
 						ExitLoop

@@ -293,6 +293,11 @@ Func Standard_Attack($AttackMethod = 1)
 		$Giant = -1
 		$WB = -1
 		$Gob = -1
+		$Loon = -1
+		$Wiz = -1
+		$Heal = -1
+		$Drags = -1
+		$Peks = -1
 		$Hog = -1
 		$Minion = -1
 		$Valk = -1
@@ -311,6 +316,16 @@ Func Standard_Attack($AttackMethod = 1)
 				$WB = $i
 			ElseIf $atkTroops[$i][0] = $eGoblin Then
 				$Gob = $i
+			ElseIf $atkTroops[$i][0] = $eBalloon Then
+				$Loon = $i
+			ElseIf $atkTroops[$i][0] = $eWizard Then
+				$Wiz = $i
+			ElseIf $atkTroops[$i][0] = $eHealer Then
+				$Heal = $i
+			ElseIf $atkTroops[$i][0] = $eDragon Then
+				$Drags = $i
+			ElseIf $atkTroops[$i][0] = $ePekka Then
+				$Peks = $i
 			ElseIf $atkTroops[$i][0] = $eHog Then
 				$Hog = $i
 			ElseIf $atkTroops[$i][0] = $eMinion Then
@@ -1100,6 +1115,12 @@ Func Standard_Attack($AttackMethod = 1)
 			If Standard_LaunchTroop($eArcher, $nbSides, 1, 2, 0, ($OuterQuad And $attackTH = 2)) Then
 				If Wave_Sleep(1) Then Return
 			EndIf
+			If Standard_LaunchTroop($eWizard, (($mixedMode) ? 1 : $nbSides), 1, (($mixedMode) ? 3 : 1), 0, (($mixedMode) ? False : ($OuterQuad And $attackTH = 2)) Then
+				If Wave_Sleep(1) Then Return
+			EndIf
+			If Standard_LaunchTroop($eDragon, (($mixedMode) ? 1 : $nbSides), 1, 2, 0, ($OuterQuad And $attackTH = 2)) Then
+				If Wave_Sleep(1) Then Return
+			EndIf						
 			If Standard_LaunchTroop($eBarbarian, (($mixedMode) ? 1 : $nbSides), 2, 2, 0, ($OuterQuad And $attackTH >= 1)) Then
 				If Wave_Sleep(1) Then Return
 			EndIf
@@ -1110,16 +1131,28 @@ Func Standard_Attack($AttackMethod = 1)
 				If Standard_LaunchTroop($eWallbreaker, 1, 2, 3, 1) Then
 					If _Sleep(Wave_Sleep(1), False) Then Return
 				EndIf
+				If Standard_LaunchTroop($eWizard, 1, 2, 3, 3) Then
+					If Wave_Sleep(1) Then Return
+				EndIf
 			Else
 				If Standard_LaunchTroop($eArcher, $nbSides, 2, 2, 0, ($OuterQuad And $attackTH >= 1)) Then
+					If Wave_Sleep(1) Then Return
+				EndIf
+				If Standard_LaunchTroop($eDragon, $nbSides, 2, 2, 0, ($OuterQuad And $attackTH >= 1)) Then
 					If Wave_Sleep(1) Then Return
 				EndIf
 				If Standard_LaunchTroop($eGoblin, $nbSides, 2, 2, 0, ($OuterQuad And $attackTH = 2)) Then
 					If Wave_Sleep(1) Then Return
 				EndIf
+				If Standard_LaunchTroop($eBalloon, $nbSides, 1, 1, 0 ) Then
+					If Wave_Sleep(1) Then Return
+				EndIf
 				If Standard_LaunchTroop($eMinion, $nbSides, 1, 1, 0, ($OuterQuad And $attackTH = 2)) Then
 					If Wave_Sleep(1) Then Return
 				EndIf
+				If Standard_LaunchTroop($ePekka, (($mixedMode) ? 1 : $nbSides), 1, 1, 1, ($OuterQuad And $attackTH = 2)) Then
+					If Wave_Sleep(1) Then Return
+				EndIf						
 			EndIf
 			; ================================================================================?
 
@@ -1212,10 +1245,19 @@ Func Standard_Attack($AttackMethod = 1)
 				If Standard_LaunchTroop($eValkyrie, 1, 1, 1, 1, ($OuterQuad And $attackTH = 2)) Then
 					If Wave_Sleep(1) Then Return
 				EndIf
+				If Standard_LaunchTroop($ePekka, 1, 1, 1, 1, ($OuterQuad And $attackTH = 2)) Then
+					If Wave_Sleep(1) Then Return
+				EndIf
 				If Standard_LaunchTroop($eArcher, 1, 2, 2, 0, ($OuterQuad And $attackTH = 2)) Then
 					If Wave_Sleep(1) Then Return
 				EndIf
+				If Standard_LaunchTroop($eDragon, 1, 2, 2, 1 ) Then
+					If Wave_Sleep(1) Then Return
+				EndIf
 				If Standard_LaunchTroop($eGoblin, 1, 2, 2, 0, ($OuterQuad And $attackTH = 2)) Then
+					If Wave_Sleep(1) Then Return
+				EndIf
+				If Standard_LaunchTroop($eBalloon, 1, 1, 1, 0) Then
 					If Wave_Sleep(1) Then Return
 				EndIf
 				If Standard_LaunchTroop($eMinion, 1, 1, 1, 0, ($OuterQuad And $attackTH = 2)) Then
@@ -1228,6 +1270,12 @@ Func Standard_Attack($AttackMethod = 1)
 				Else
 					Standard_dropHeroes($BottomRight, $King, $Queen, $AttackMethod)
 					$hHeroTimer = TimerInit()
+				EndIf
+				If Standard_LaunchTroop($eHealer, 1, 1, 1, 1, ($OuterQuad And $attackTH >= 1)) Then
+					If Wave_Sleep(1) Then Return
+				EndIf
+				If Standard_LaunchTroop($eWizard, 1, 3, 3, 1, ($OuterQuad And $attackTH >= 1)) Then
+					If Wave_Sleep(1) Then Return
 				EndIf
 				If Standard_LaunchTroop($eWallbreaker, 1, 3, 3, 1) Then
 					If _Sleep(Wave_Sleep(1), False) Then Return
