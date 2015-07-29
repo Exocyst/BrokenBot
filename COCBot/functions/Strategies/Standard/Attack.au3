@@ -1192,17 +1192,17 @@ Func Standard_Attack($AttackMethod = 1)
 				EndIf
 			Else
 				If $nbSides = 1 Then
-					Standard_dropCC($BottomRight, $CC, $AttackMethod)
+					Standard_dropCC($Edges[$EdgeOrder[0]], $CC, $AttackMethod)
 				Else
-					Standard_dropCC($TopLeft, $CC, $AttackMethod)
+					Standard_dropCC($Edges[$EdgeOrder[0]], $CC, $AttackMethod)
 				EndIf
 				If _Sleep(100) Then Return
 				If Not $mixedMode Then
 					If $nbSides = 1 Then
-						Standard_dropHeroes($BottomRight, $King, $Queen, $AttackMethod)
+						Standard_dropHeroes($Edges[$EdgeOrder[0]], $King, $Queen, $AttackMethod)
 						$hHeroTimer = TimerInit()
 					Else
-						Standard_dropHeroes($TopLeft, $King, $Queen, $AttackMethod)
+						Standard_dropHeroes($Edges[$EdgeOrder[0]], $King, $Queen, $AttackMethod)
 						$hHeroTimer = TimerInit()
 					EndIf
 				EndIf
@@ -1226,7 +1226,7 @@ Func Standard_Attack($AttackMethod = 1)
 					Standard_dropHeroes($DropArray, $King, $Queen, $AttackMethod, $AimTH)
 					$hHeroTimer = TimerInit()
 				Else
-					Standard_dropHeroes($BottomRight, $King, $Queen, $AttackMethod)
+					Standard_dropHeroes($Edges[$EdgeOrder[0]], $King, $Queen, $AttackMethod)
 					$hHeroTimer = TimerInit()
 				EndIf
 				If Standard_LaunchTroop($eWallbreaker, 1, 3, 3, 1) Then
