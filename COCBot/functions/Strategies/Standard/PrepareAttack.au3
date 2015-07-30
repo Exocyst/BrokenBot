@@ -44,7 +44,7 @@ Func Standard_PrepareAttack($remaining = False, $AttackMethod = 1, $noPrint = Fa
 				EndIf
 			Case 3
 				; Barch
-				If $troopKind <> $eBarbarian And $troopKind <> $eArcher And $troopKind <> $eKing And $troopKind <> $eQueen And $troopKind <> $eCastle And $troopKind <> $eLSpell Then
+				If $troopKind <> $eBarbarian And $troopKind <> $eArcher And $troopKind <> $eMinion And $troopKind <> $eKing And $troopKind <> $eQueen And $troopKind <> $eCastle And $troopKind <> $eLSpell Then
 					If Not $remaining And Not $noPrint Then
 						If NameOfTroop($troopKind) <> "Unknown" Then SetLog(GetLangText("msgIgnoring") & NameOfTroop($troopKind))
 					EndIf
